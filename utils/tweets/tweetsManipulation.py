@@ -5,7 +5,7 @@ import treetaggerwrapper
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import pandas as pd
-
+import re
 
 def tweetsTokenize(tweets_df):
     tweets_df['text'] = tweets_df['text'].apply(word_tokenize)
@@ -34,14 +34,14 @@ def stopWordRemoval(text, stopwords_list):
 def stopWordRemoval2(text, stopwords_list):
   text = " ".join(text)
   for word in stopwords_list:
-    text = text.replace(word, '')
+    text = re.sub(r"\b%s\b" % word, '', text)
   return word_tokenize(text)
 
 def stopWordRemovalDF(tweets_df):
     englishStopwords = stopwords.words('english')
     italianStopwords = stopwords.words('italian')
     stop_word = []
-    with open('/home/stefano/Desktop/WordCloud/execution_file/stop_word.txt') as f:
+    with open('./execution_file/stop_word.txt') as f:
       stop_word = f.read().splitlines()
     tweets_df['text'] = tweets_df['text'].apply(lambda x: stopWordRemoval(x, englishStopwords))
     tweets_df['text'] = tweets_df['text'].apply(lambda x: stopWordRemoval(x, italianStopwords))

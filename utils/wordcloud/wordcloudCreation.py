@@ -6,10 +6,10 @@ import pandas as pd
 def createWordcloud(wordColor, backgroundColor, wordList, numero, max_words):
     wordList.index = [words.upper() for words in wordList.index]
     wordList.index = [words.replace(" ", "-") for words in wordList.index]
-    mask = np.array(Image.open('/home/stefano/Desktop/WordCloud/number_image/' + numero + '.png'))
+    mask = np.array(Image.open('./number_image/' + numero + '.png'))
     col_func = get_single_color_func(wordColor)
     wordcloud = WordCloud(mode="RGB",
-                      font_path="/home/stefano/Desktop/WordCloud/execution_file/Arial.ttf",
+                      font_path="./execution_file/Arial.ttf",
                       max_words = max_words,
                       min_font_size = 10,
                       mask=mask,
