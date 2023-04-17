@@ -2,7 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd 
 
 def tfIdfList(tweets_df):
-    tv = TfidfVectorizer(use_idf=True, ngram_range=(1,2))
+    tv = TfidfVectorizer(use_idf=True, ngram_range=(1,3))
     tv.fit(tweets_df['text'].astype(str))
     tweets_tfidf = tv.transform(tweets_df['text'].astype(str))
     feature_names = tv.get_feature_names_out()
