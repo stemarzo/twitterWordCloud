@@ -4,6 +4,7 @@ myenv/
 treetagger/
 tweets/
 wordcloud/
+prova.py
 *.py[cod]
 *$py.class
 
