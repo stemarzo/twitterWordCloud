@@ -1,5 +1,5 @@
 # Twitter News Word Cloud 
 
 <p align="center">
-  <img width="350" height="250" src="[C://Users/marzo/Downloads/Telegram Desktop/2023-05-21.png](https://github.com/stemarzo/twitterWordCloud/blob/main/number_image/01.png)">
+  <img width="350" height="250" src="https://github.com/stemarzo/twitterWordCloud/blob/main/number_image/01.png">
 </p>
