@@ -2,6 +2,8 @@
 __pycache__/
 myenv/
 treetagger/
+tweets/
+wordcloud/
 *.py[cod]
 *$py.class
 

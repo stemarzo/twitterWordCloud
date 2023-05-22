@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 def createWordcloud(wordColor, backgroundColor, wordList, numero, max_words):
+    wordList.index = [str(words) for words in wordList.index]
     wordList.index = [words.upper() for words in wordList.index]
     wordList.index = [words.replace(" ", "-") for words in wordList.index]
     mask = np.array(Image.open('./number_image/' + numero + '.png'))
@@ -19,7 +20,7 @@ def createWordcloud(wordColor, backgroundColor, wordList, numero, max_words):
 def changeWord(wordList, path):
     changeList = pd.read_csv(path, names=['old', 'new'])
     for word in wordList.index:
-        result = changeList.loc[changeList['old'].str.contains(word, case=False)]
+        result = changeList.loc[changeList['old'].str.fullmatch(word, case=False)]
         if len(result.index) > 0:
             print(changeList.loc[result.index[0], 'new'])
             wordList.rename(index={word : changeList.loc[result.index[0], 'new']},inplace=True)

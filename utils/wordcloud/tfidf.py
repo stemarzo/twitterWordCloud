@@ -13,11 +13,17 @@ def tfIdfList(tweets_df):
 
 def tfIdfScore(tweets_df, lunghezza):
     scoreList = tfIdfList(tweets_df).sort_values(ascending=False)[: int(lunghezza+ (0.1*lunghezza))]
-    for parola in scoreList.index:
-        matching = [s for s in scoreList.index if parola in s]
-        if len(matching) > 1:
-            print(parola)
-            scoreList = scoreList.drop(parola)
     return scoreList
 
 
+def removeWordScoreList(scoreList, path):
+    stop_word = []
+    with open(path) as f:
+        stop_word = f.read().splitlines()
+    for parola in stop_word:
+        try:
+            scoreList = scoreList.drop(parola)
+            print(parola)
+        except:
+            print("no word")
+    return scoreList
